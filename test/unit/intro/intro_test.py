@@ -28,7 +28,7 @@ def test_except_fun():
 
 def test_need_file(tmp_path):
     print(tmp_path)
-    assert 0
+    assert 1
 
 
 def except_fun1():

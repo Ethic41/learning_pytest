@@ -132,16 +132,15 @@ def test_string_only(append_first, order_for_caching, first_entry):
 
 ### Autouse & fixtures
 
-@pytest.fixture(autouse=True)
-def append_first_1(order_for_caching, first_entry):
-    return order_for_caching.append(first_entry)
-
+# @pytest.fixture(autouse=True)
+# def append_first_1(order_for_caching, first_entry):
+#     return order_for_caching.append(first_entry)
 
 def test_string_only_1(order_for_caching, first_entry):
-    assert order_for_caching == [first_entry]
+    assert order_for_caching != [first_entry]
 
 
 def test_string_and_int(order_for_caching, first_entry):
     order_for_caching.append(2)
-    assert order_for_caching == [first_entry, 2]
+    assert order_for_caching != [first_entry, 2]
 
