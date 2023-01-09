@@ -11,13 +11,10 @@ import smtplib
 import pytest
 
 
-@pytest.fixture(scope="module")
+@pytest.fixture(scope="module", params=["smtp.gmail.com", "mail.python.org"])
 def smtp_connection(request):
-    server = getattr(request.module, "smtpserver", "smtp.gmail.com")
-    smtp_connection = smtplib.SMTP(server, 587, timeout=5)
+    smtp_connection = smtplib.SMTP(request.param, 587, timeout=5)
     yield smtp_connection
-    print(f"finalizing {smtp_connection} ({server})")
+    print(f"finalizing {smtp_connection}")
     smtp_connection.close()
-
-
 
