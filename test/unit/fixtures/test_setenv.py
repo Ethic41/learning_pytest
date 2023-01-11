@@ -33,3 +33,4 @@ class TestDirectoryInit:
 
     def test_cwd_again_starts_empty(self):
         assert os.listdir(os.getcwd()) == []
+
